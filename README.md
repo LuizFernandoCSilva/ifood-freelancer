@@ -53,37 +53,59 @@ Dentro desta plataforma, existem uma grande variedade de sistemas que ajudam a d
 
 Cada um desses sistemas desempenha um papel fundamental na estrutura geral, permitindo uma integração eficiente e a implementação de novas funcionalidades de maneira ágil. Abaixo, você encontrará uma breve descrição de cada um, destacando suas principais características e contribuições para o projeto.
 
-### Sistema de cadastro
+### Sistema de Cadastro
 
-O sistema de cadastro é o responsável por uma das primeiras interações do usuário com o site, **a criação da conta**. Nesta etapa diferenciamos os usuários que serão entitulados como **profissionais** e os que serão entitulados como **contratantes**. 
+O sistema de cadastro é responsável por uma das primeiras interações do usuário com o site: **a criação da conta**. Nesta etapa, diferenciamos os usuários em duas categorias: **profissionais** e **contratantes**. Para isso, contamos com uma caixa de seleção, onde o usuário pode escolher a opção que mais se identifica.
 
-Antes de proseguirmos, faz-se necessário uma breve explicação a respeito de cada tipo de usuário. Os **profissionais**, serão os usuários que serão chamados ou se oferecerão para realizar um determinado serviço. Por outro lado os **contratantes**, serão os usuários que buscarão ou publicarão seu interesse por alguém para realizar determinado serviço.
+Antes de prosseguir, é necessário explicar brevemente cada tipo de usuário. Começando com os **profissionais**, estes são os usuários que serão chamados ou que se oferecerão para realizar um determinado serviço. Por outro lado, os **contratantes** são os usuários que buscarão ou publicarão seu interesse em encontrar alguém para realizar um serviço específico. Dessa forma, fica evidente a necessidade de dividir de forma clara os dois tipos de usuários dentro da plataforma, principalmente para evitar problemas de permissão.
 
-Seguindo com o cadastramento, para cada tipo de usuário haverá uma espécie de formulário a ser preenchido, nele estarão presentes algumas lacunas que deverão ser (ou não, para os itens opcionais) preenchidas com os seguintes itens:
+Ao realizar o cadastramento, haverá um formulário específico para cada tipo de usuário, contendo campos que deverão ser preenchidos (ou não, para os itens opcionais) com as seguintes informações:
 
-*   Para os **profissionais**:
-    - Nome completo ou nome da empresa
-    - E-mail e telefone de contato
-    - Área de atuação (ex.: design gráfico, programação, marketing, serviços de saúde)
-    - Lista de habilidades e competências
-    - Experiência profissional (com um campo para adicionar projetos ou serviços anteriores)
-    - Portfólio (links ou arquivos de projetos)
-    - Foto de perfil (para pessoas fisícas) ou logotipo (para empresas)
-    - Disponibilidade (full-time, part-time, por projeto)
-    - Opção de adicionar um vídeo de apresentação
-    - Métodos de pagamento (para facilitar contratos)
- 
+#### Para os **profissionais**:
+- Nome completo ou nome da empresa
+- E-mail e telefone de contato
+- Área de atuação (ex.: design gráfico, programação, marketing, serviços de saúde)
+- Lista de habilidades e competências
+- Experiência profissional (com um campo para adicionar projetos ou serviços anteriores)
+- Portfólio (links ou arquivos de projetos)
+- Foto de perfil (para pessoas físicas) ou logotipo (para empresas)
+- Disponibilidade (full-time, part-time, por projeto)
+- Opção de adicionar um vídeo de apresentação
+- Métodos de pagamento (para facilitar contratos)
 
-*   Para os **contratantes**:
-    - Nome ou nome da empresa
-    - E-mail e telefone de contato
-    - Tipo de contratante (pessoa física ou jurídica)
-    - Descrição da empresa (opcional)
-    - Localização (bairro, cidade e país)
-    - Métodos de pagamento (para facilitar contratos)
+#### Para os **contratantes**:
+- Nome ou nome da empresa
+- E-mail e telefone de contato
+- Tipo de contratante (pessoa física ou jurídica)
+- Descrição da empresa (opcional)
+- Localização (bairro, cidade e país)
+- Métodos de pagamento (para facilitar contratos)
 
+### Sistema de Login
 
-### Sistema de login
+O sistema de login permite que os usuários acessem suas contas de forma segura e prática. Após a criação da conta, tanto **profissionais** quanto **contratantes** poderão efetuar o login na plataforma utilizando suas credenciais.
+
+#### Funcionalidades do Sistema de Login:
+- **Formulário de Login**: O usuário deve inserir seu e-mail e senha cadastrados para acessar a conta.
+  
+- **Recuperação de Senha**: Caso o usuário esqueça sua senha, deve haver uma opção de recuperação. O processo normalmente envolve o envio de um e-mail com instruções para redefinir a senha.
+
+- **Autenticação Segura**: Implementação de medidas de segurança, como criptografia de senhas e proteção contra tentativas de acesso não autorizadas.
+
+- **Lembre-me**: Opção para que o usuário permaneça logado em sua conta, evitando a necessidade de inserir as credenciais a cada acesso.
+
+- **Logout**: Função que permite ao usuário encerrar sua sessão de forma segura.
+
+- **Verificação de Autenticação**: O sistema possui uma função responsável por confirmar se o usuário está logado e autenticado. Essa funcionalidade é fundamental para outros sistemas da plataforma, garantindo que apenas usuários autorizados possam acessar recursos e informações sensíveis.
+
+#### Considerações de Segurança:
+- **Validação de Credenciais**: O sistema deve validar as credenciais fornecidas antes de permitir o acesso à conta.
+  
+- **Bloqueio de Conta**: Após um número específico de tentativas de login falhadas, a conta deve ser temporariamente bloqueada para prevenir acessos não autorizados.
+
+- **Autenticação de Dois Fatores** (opcional): Para maior segurança, a implementação da autenticação de dois fatores pode ser considerada, onde o usuário deve confirmar sua identidade através de um segundo método, como um código enviado por SMS ou e-mail.
+
+Este sistema de login é essencial para garantir que apenas usuários autorizados tenham acesso às funcionalidades da plataforma, proporcionando uma experiência segura e confiável.
 
 ### Sistema de busca
 
