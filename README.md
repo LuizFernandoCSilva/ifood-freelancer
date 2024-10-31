@@ -86,6 +86,7 @@ Ao realizar o cadastramento, haverá um formulário específico para cada tipo d
 O sistema de login permite que os usuários acessem suas contas de forma segura e prática. Após a criação da conta, tanto **profissionais** quanto **contratantes** poderão efetuar o login na plataforma utilizando suas credenciais.
 
 #### Funcionalidades do Sistema de Login:
+
 - **Formulário de Login**: O usuário deve inserir seu e-mail e senha cadastrados para acessar a conta.
   
 - **Recuperação de Senha**: Caso o usuário esqueça sua senha, deve haver uma opção de recuperação. O processo normalmente envolve o envio de um e-mail com instruções para redefinir a senha.
@@ -99,6 +100,7 @@ O sistema de login permite que os usuários acessem suas contas de forma segura 
 - **Verificação de Autenticação**: O sistema possui uma função responsável por confirmar se o usuário está logado e autenticado. Essa funcionalidade é fundamental para outros sistemas da plataforma, garantindo que apenas usuários autorizados possam acessar recursos e informações sensíveis.
 
 #### Considerações de Segurança:
+
 - **Validação de Credenciais**: O sistema deve validar as credenciais fornecidas antes de permitir o acesso à conta.
   
 - **Bloqueio de Conta**: Após um número específico de tentativas de login falhadas, a conta deve ser temporariamente bloqueada para prevenir acessos não autorizados.
@@ -107,14 +109,46 @@ O sistema de login permite que os usuários acessem suas contas de forma segura 
 
 Este sistema de login é essencial para garantir que apenas usuários autorizados tenham acesso às funcionalidades da plataforma, proporcionando uma experiência segura e confiável.
 
-### Sistema de busca
+### Sistema de Busca
 
-### Sistema de propostas
+Este sistema é responsável pelas buscas realizadas dentro da plataforma. O tipo de busca depende do usuário que está realizando a pesquisa, sendo ele um **profissional** ou um **contratante**. Além disso, a busca pode utilizar diferentes filtros para refinar os resultados.
+
+- **Profissionais** podem buscar apenas por **contratantes**, ajudando-os a encontrar oportunidades de trabalho.
+  
+- **Contratantes**, por sua vez, podem buscar apenas por **profissionais**, permitindo que encontrem especialistas adequados para seus serviços.
+
+Essa estrutura garante que cada tipo de usuário tenha acesso apenas às informações relevantes, promovendo uma interação mais eficiente e focada dentro da plataforma.
+
+### Sistema de Propostas
+
+O sistema de propostas é responsável por gerenciar as ofertas e solicitações de serviços até que sejam aceitas ou recusadas. Este sistema permite uma interação dinâmica entre **contratantes** e **profissionais**.
+
+#### Funcionalidades para Contratantes:
+
+- **Postar procura por serviços**: O contratante pode publicar na plataforma uma solicitação por serviços, detalhando suas necessidades e requisitos.
+
+- **Fazer um proposta direta**: O contratante tem a opção de enviar uma proposta diretamente para um profissional específico, estabelecendo uma relação mais direta e personalizada.
+
+#### Funcionalidades para Profissionais:
+
+- **Postar oferta de serviço**: O profissional pode publicar na plataforma uma oferta de serviço, apresentando suas habilidades e condições para o trabalho.
+  
+- **Fazer um oferta direta**: O profissional também pode enviar uma oferta de serviço diretamente para um contratante específico, demonstrando seu interesse em atender à solicitação.
+
+Esse sistema assegura que as interações entre contratantes e profissionais sejam organizadas e eficientes, permitindo que ambos encontrem as melhores oportunidades de trabalho e colaborações.
 
 ### Sistema de projetos
 
 ### Sistema de progresso
 
 ### Sistema de contratos
+
+### Sistema de avaliações
+
+### Sistema de assinatura
+
+### Sistema de pagamento
+
+### Sistema de notificações
 
 ### Banco de dados
