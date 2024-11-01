@@ -49,6 +49,10 @@ Dentro desta plataforma, existem uma grande variedade de sistemas que ajudam a d
 *   Sistema de projetos
 *   Sistema de progresso
 *   Sistema de contratos
+*   Sistema de avaliações
+*   Sistema de assinatura
+*   Sistema de pagamento
+*   Sistema de notificações
 *   Banco de dados
 
 Cada um desses sistemas desempenha um papel fundamental na estrutura geral, permitindo uma integração eficiente e a implementação de novas funcionalidades de maneira ágil. Abaixo, você encontrará uma breve descrição de cada um, destacando suas principais características e contribuições para o projeto.
@@ -137,11 +141,68 @@ O sistema de propostas é responsável por gerenciar as ofertas e solicitações
 
 Esse sistema assegura que as interações entre contratantes e profissionais sejam organizadas e eficientes, permitindo que ambos encontrem as melhores oportunidades de trabalho e colaborações.
 
-### Sistema de projetos
+### Sistema de Projetos
 
-### Sistema de progresso
+O sistema de projetos é responsável por gerenciar os projetos que já foram aceitos. Ele facilita o acompanhamento e a organização das informações relacionadas a cada projeto, garantindo que todos os detalhes sejam devidamente registrados.
 
-### Sistema de contratos
+#### Funcionalidades do Sistema de Projetos:
+
+- **Descrição Detalhada do Projeto**: O sistema solicita aos usuários que forneçam uma descrição completa do projeto, incluindo:
+
+  - **Data de Início do Projeto**: A data em que o projeto terá início.
+  - **Data de Término do Projeto**: A data prevista para a conclusão do projeto.
+  - **Tipo de Serviço Contratado**: Especificação do serviço que foi contratado.
+  - **Descrição do Serviço**: Uma explicação detalhada do serviço a ser prestado.
+  - **Valor Acordado**: O valor que foi acordado entre as partes para a realização do serviço.
+
+Esse sistema garante que todos os projetos sejam documentados de forma clara e organizada, permitindo um melhor gerenciamento e acompanhamento do progresso.
+
+### Sistema de Progresso
+
+O sistema de progresso é responsável por gerenciar e atualizar o andamento dos projetos ao longo do tempo. Ele fornece uma visão clara sobre o status de cada projeto, facilitando o acompanhamento tanto para contratantes quanto para profissionais. Essa visão é proporcionada por uma interface de status, que apresentará o status atual ou uma barra de progresso dependendo da etapa.
+
+#### Estágios do Sistema de Progresso:
+
+- **Aguardando Fechamento do Contrato**: Nesta fase, o projeto está apenas aguardando a finalização do contrato para saber a data que deverá coomeçar.
+
+- **Aguardando Data de Início**: Assim como a etapa anterior, aqui o projeto ainda não foi iniciado. Aqui ele aguarda a data de início assinada no contrato.
+
+- **Em Andamento**: 
+
+  - Assim que chegar a data que foi acordada como início do projeto, iniciará uma barra de progresso que permitirá ter um:
+
+    - **Retorno Visual do Progresso**: Haverá um barra que se encherá gradualmente conforme o tempo passa, refletindo o progresso do projeto.
+    
+    - **Retorno por Porcentagem do Progresso**: Uma porcentagem explícita é exibida na página (no meio da barra de progresso), indicando o quanto do projeto foi concluído.
+
+  - O tempo é considerado de forma discreta, utilizando o dia como referência. Portanto, a porcentagem e a barra só serão atualizadas a cada dia que passa.
+
+- **Finalizado**: Indica que o projeto foi concluído, encerrando o acompanhamento de progresso.
+
+Esse sistema proporciona um acompanhamento eficiente do progresso dos projetos, garantindo que todas as partes interessadas estejam cientes do status atual e do tempo restante para a conclusão.
+
+
+### Sistema de Contratos
+
+O sistema de contratos é responsável pela criação dos contratos e pelo gerenciamento das assinaturas das partes envolvidas. Este sistema utiliza as informações adquiridas pelo sistema de projetos para gerar contratos automaticamente, garantindo agilidade e precisão nas documentações.
+
+#### Funcionalidades do Sistema de Contratos:
+
+- **Geração Automática de Contratos**: Com base nas informações dos projetos, o sistema cria um contrato que inclui os seguintes campos:
+
+  - **Dados do Contratante e do Contratado**: Um campo que será preenchido com as informações de ambas as partes envolvidas.
+  - **Especificações do Serviço Acordado**: Um campo que descreve detalhadamente o serviço que foi acordado.
+  - **Prazo Acordado**: Um campo que informa o prazo estipulado para a conclusão do serviço.
+  - **Valor Acordado**: Um campo que indica o valor que foi acordado para a prestação do serviço.
+  
+- **Cláusulas Importantes**:
+
+  - **Desresponsabilização da Plataforma**: Uma cláusula que isenta a plataforma de responsabilidade sobre os serviços prestados entre contratante e contratado.
+  - **Porcentagem Cobrada pela Plataforma**: Uma cláusula que detalha a porcentagem que será cobrada pela plataforma pelos serviços realizados.
+
+- **Assinaturas das Partes Envolvidas**: Um campo destinado às assinaturas digitais de ambas as partes, formalizando o contrato.
+
+Esse sistema assegura que todos os contratos sejam gerados de forma padronizada e eficiente, garantindo que as obrigações e direitos de cada parte estejam claramente documentados.
 
 ### Sistema de avaliações
 
