@@ -1,15 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '@root/domain/user.domain';
-
+import { UserProfissional, UserContratante } from '@root/domain/user.domain';
 @Injectable()
 export class UsersRepository {
-  private users: User[] = [];
+  private usersProfissionais: UserProfissional[] = [];
+  private usersContratantes: UserContratante[] = [];
 
-  public async createUser(user: User): Promise<void> {
-    this.users.push(user);
+  public async createUserProfissional(user: UserProfissional): Promise<void> {
+    this.usersProfissionais.push(user);
   }
 
-  public async getUserByEmail(email: string): Promise<User | undefined> {
-    return this.users.find((user) => user.email === email);
+  public async createUserContratante(user: UserContratante): Promise<void> {
+    this.usersContratantes.push(user);
+  }
+
+  public async getUserByEmail(
+    email: string,
+  ): Promise<UserProfissional | UserContratante | undefined> {
+    // Procura nas duas listas para retornar qualquer tipo de usuário com o mesmo email
+    return (
+      this.usersProfissionais.find((user) => user.email === email) ||
+      this.usersContratantes.find((user) => user.email === email)
+    );
   }
 }

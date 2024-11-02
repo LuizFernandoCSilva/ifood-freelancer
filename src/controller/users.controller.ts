@@ -14,23 +14,43 @@ export class UserControllers {
   @Post()
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'User created',
+    description: 'User (Profissional ou Contratante) criado com sucesso',
     type: CreateUserResponseDTO,
   })
   public async createUser(
     @Body() createUserBody: CreateUserRequestDTO,
   ): Promise<CreateUserResponseDTO> {
-    const createdUser = await this.usersService.createUser({
-      name: createUserBody.name,
-      email: createUserBody.email,
-      telefone: createUserBody.telefone,
-      password: createUserBody.password,
-      habilidades: createUserBody.habilidades,
-      disponibilidade: createUserBody.disponibilidade,
-      met_pay: createUserBody.met_pay,
-      type_contratante: createUserBody.type_contratante,
-      localizacao: createUserBody.localizacao,
-    });
+    const { userType, name, email, telefone, password } = createUserBody;
+
+    // Construir o payload de acordo com o tipo de usuário
+    const userData = {
+      userType,
+      name,
+      email,
+      telefone,
+      password,
+      ...(userType === 'profissional' && {
+        areaAtuacao: createUserBody.areaAtuacao,
+        habilidades: createUserBody.habilidades,
+        experiencia: createUserBody.experiencia,
+        portfolio: createUserBody.portfolio,
+        fotoPerfil: createUserBody.fotoPerfil,
+        disponibilidade: createUserBody.disponibilidade,
+        videoApresentacao: createUserBody.videoApresentacao,
+        metodosPagamento: createUserBody.metodosPagamentoP,
+      }),
+      ...(userType === 'contratante' && {
+        tipoContratante: createUserBody.tipoContratante,
+        descricaoEmpresa: createUserBody.descricaoEmpresa,
+        localizacao: createUserBody.localizacao,
+        metodosPagamento: createUserBody.metodosPagamentoC,
+      }),
+    };
+
+    // Chama o serviço de criação de usuário
+    const createdUser = await this.usersService.createUser(userData);
+
+    // Retorna a resposta com o ID e nome do usuário criado
     return new CreateUserResponseDTO(createdUser.id, createdUser.name);
   }
 }
