@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.maonamassa.maonamassa.Entities.ContratanteEntity;
 import com.maonamassa.maonamassa.Entities.ProfissionalEntity;
 import com.maonamassa.maonamassa.Services.CreateUserService;
+
 import com.maonamassa.maonamassa.controller.dto.UserResponseDTO;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,6 +26,7 @@ public class UserController {
     @Autowired
     private CreateUserService createUserUseCase;
 
+    
     @PostMapping("/create/profissional")
     @Operation(summary = "Create Profissional", description = "Create a new profissional user")
     public ResponseEntity<Object> createProfissional(@RequestBody ProfissionalEntity profissional) {

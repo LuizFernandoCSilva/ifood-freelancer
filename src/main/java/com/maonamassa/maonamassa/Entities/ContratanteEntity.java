@@ -18,10 +18,7 @@ public class ContratanteEntity extends UserEntity {
   @Schema(description = "Descrição do contratante", example = "Empresa de tecnologia")
   private String descricao;
 
-  @Schema(description = "CNPJ do contratante", example = "12345678910111")
-  private String cnpj;
-
   @Schema(description = "CPF do contratante", example = "12345678910")
-  private String cpf;
+  private String cpfCnpj;
 
 }

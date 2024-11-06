@@ -29,6 +29,7 @@ public class SecurityConfig {
       .authorizeHttpRequests(auth -> {
         auth.requestMatchers("/user/create/profissional","/user/create/contratante").permitAll()
             .requestMatchers("/auth/login").permitAll()
+            .requestMatchers("/home").permitAll()
             .requestMatchers(SWAGGER_LIST).permitAll();
 
         auth.anyRequest().authenticated();

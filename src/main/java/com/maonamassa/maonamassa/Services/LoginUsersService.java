@@ -63,7 +63,7 @@ public class LoginUsersService {
 
     private AuthUserResponseDTO authenticateContratante(ContratanteEntity contratante, String rawPassword) throws Exception {
         var passwordMatch = passwordEncoder.matches(rawPassword, contratante.getPassword());
-        if (!passwordMatch) {
+        if (!(Boolean) passwordMatch) {
             throw new Exception("Email/Password incorrect");
         }
 
@@ -73,7 +73,7 @@ public class LoginUsersService {
 
     private AuthUserResponseDTO authenticateProfissional(ProfissionalEntity profissional, String rawPassword) throws Exception {
         var passwordMatch = passwordEncoder.matches(rawPassword, profissional.getPassword());
-        if (!passwordMatch) {
+        if (!(Boolean) passwordMatch) {
             throw new Exception("Email/Password incorrect");
         }
         profissional.setLogado(true);

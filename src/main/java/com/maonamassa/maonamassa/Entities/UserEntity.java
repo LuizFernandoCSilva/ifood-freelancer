@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 import java.util.List;
@@ -37,15 +36,12 @@ public abstract class UserEntity {
   @Schema(example = "1234567891", minLength = 10, maxLength = 100, requiredMode = RequiredMode.REQUIRED, description = "Senha do candidato")
   private String password;
 
-  @NotBlank()
   @Schema(description = "Telefone do usuário", example = "11999999999")
   private String phone;
 
-  @NotBlank()
   @Schema(description = "Endereço do usuário", example = "Rua dos Bobos, 0")
   private String address;
 
-  @NotEmpty()
   @Schema(description = "Métodos de pagamento do usuário", example = "CARTAO_DE_CREDITO")
   private List<MetododePagamento> pagamento;
 

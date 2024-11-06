@@ -24,5 +24,5 @@ public class ProfissionalEntity extends UserEntity {
 
   @NotBlank()
   @Schema(description = "CPF do profissional", example = "12345678910")
-  public String cpf;
+  public String cpfCnpj;
 }
