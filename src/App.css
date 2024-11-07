@@ -1,0 +1,342 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("assets/bg.webp");
+  background-size: cover;
+  background-position: center;
+}
+/* ForgotPassword */
+.back-button {
+  margin-top: 10px;
+}
+
+/* Login */
+
+.container {
+  width: 450px;
+  background: rgba(#713e06);
+  
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(80px);
+  border: 2px solid (11, 159, 156, 0.2);
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 30px;
+  color: #ffffff;
+
+}
+
+.container .input-field {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px auto;
+}
+.input-field {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px auto;
+}
+
+.input-field .label {
+  position: absolute;
+  left: 20px;
+  top: 40%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 18px;
+  pointer-events: none;
+  transition: 0.3s ease all; /* Suaviza o movimento */
+}
+
+.input-field .label.active {
+  top: -10px; /* Move para cima quando ativo */
+  left: 25px;
+  font-size: 14px;
+  color: #ffffff; /* Ou outra cor para quando estiver ativo */
+}
+
+.input-field input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 18px;
+  color: #fff;
+}
+
+.input-field input::placeholder {
+  color: #fff;
+}
+
+.input-field .icon {
+  position: absolute;
+  right: 20px;
+  top: 38%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #fff;
+}
+
+.container .recall-forget {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+  color: #fff;
+
+}
+
+.recall-forget label input {
+  accent-color: #fff;
+  margin-right: 4px;
+}
+
+.recall-forget a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.recall-forget a:hover {
+  text-decoration: underline;
+}
+
+.container button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(113,62,6);
+  font-weight: 700;
+  text-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+.container button:hover {
+  transform: scale(1.05);
+}
+
+
+.container .signup-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+  color: #fff;
+
+}
+
+.signup-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link p a:hover {
+  text-decoration: underline;
+}
+
+.input-field label span {
+  color: #fff; /* Define a cor dos títulos dos campos como branco */
+}
+
+/* Register */
+.input-field {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 2px solid rgba(113,62,6, 1.0);
+  font-size: 16px;
+}
+
+.login-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+  color: #fff;
+}
+
+.login-link p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link p a:hover {
+  text-decoration: underline;
+}
+.select-field {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.select-field select {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 2px solid rgba(113,62,6, 1.0);
+  font-size: 16px;
+  color: #713e06;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: center; 
+  text-align-last: center;
+}
+
+.select-field label {
+  font-size: 16px;
+  color: #fff;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/*Home*/
+.home-page {
+  background: none;
+}
+
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.content {
+  display: flex;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.list-section {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.list-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.rating {
+  color: #f4b400;
+}
+
+.view-button {
+  background-color: rgba(113,62,6, 1.0); /* Fundo vermelho */
+  color: white; /* Texto branco */
+  border: none; /* Remove a borda */
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.view-button:hover {
+  background-color: darkred; /* Fundo vermelho escuro ao passar o mouse */
+}
+.details-section {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: white;
+  color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}
+
+.logout-button:hover {
+  color: #ff0000;
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-container {
+  position: relative;
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 8px 8px 8px 35px; /* Espaço para a lupa */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
