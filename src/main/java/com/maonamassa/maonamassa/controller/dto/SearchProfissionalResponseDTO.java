@@ -1,5 +1,7 @@
 package com.maonamassa.maonamassa.controller.dto;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +10,7 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class SearchProfissionalResponseDTO {
+  private UUID id;
   private String name;
   private String phone;
   private String address;

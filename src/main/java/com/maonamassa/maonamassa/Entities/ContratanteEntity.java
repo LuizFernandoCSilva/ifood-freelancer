@@ -1,12 +1,15 @@
 package com.maonamassa.maonamassa.Entities;
 
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
+
+import com.maonamassa.maonamassa.Contract.Entities.OfertaEntity;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -21,4 +24,7 @@ public class ContratanteEntity extends UserEntity {
   @Schema(description = "CPF do contratante", example = "12345678910")
   private String cpfCnpj;
 
+  // Relacionamento com Ofertas
+  @OneToMany(mappedBy = "contratante")
+  private List<OfertaEntity> ofertas; // Um contratante pode ter várias ofertas
 }

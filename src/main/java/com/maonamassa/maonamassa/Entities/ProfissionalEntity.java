@@ -1,13 +1,16 @@
 package com.maonamassa.maonamassa.Entities;
 
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
+
+import com.maonamassa.maonamassa.Contract.Entities.OfertaEntity;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -28,4 +31,8 @@ public class ProfissionalEntity extends UserEntity {
 
   @Schema(description = "Descrição do profissional", example = "Desenvolvedor de software com 10 anos de experiência")
   public String descricao;
+
+  // Relacionamento com Ofertas
+  @OneToMany(mappedBy = "profissional")
+  private List<OfertaEntity> ofertas; // Um profissional pode ter várias ofertas
 }

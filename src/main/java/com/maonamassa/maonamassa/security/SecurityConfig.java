@@ -31,6 +31,7 @@ public class SecurityConfig {
                 auth.requestMatchers("/user/create/profissional", "/user/create/contratante").permitAll()
                     .requestMatchers("/auth/login").permitAll()
                     .requestMatchers("/home/**").permitAll() // Libera todas as rotas /home/
+                    .requestMatchers("/offers/**").permitAll() // Libera todas as rotas /offers/
                     .requestMatchers(SWAGGER_LIST).permitAll()
                     .anyRequest().authenticated();
             });

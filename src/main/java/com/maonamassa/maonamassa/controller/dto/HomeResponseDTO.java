@@ -1,5 +1,7 @@
 package com.maonamassa.maonamassa.controller.dto;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HomeResponseDTO {
+  private UUID id;
   private String email;
   private String name;
   private String phone;

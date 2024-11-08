@@ -29,9 +29,9 @@ public class HomeService {
 
   public HomeResponseDTO execute(HomeRequestDTO request) {
   return profissionalRepository.findByEmail(request.getEmail())
-    .map(profissional -> new HomeResponseDTO(profissional.getEmail() ,profissional.getName(), profissional.getPhone(), profissional.getAddress(), profissional.getDisponibilidade(), profissional.getAreaAtuacao(), "0", profissional.getCpfCnpj()))
+    .map(profissional -> new HomeResponseDTO(profissional.getId(),profissional.getEmail() ,profissional.getName(), profissional.getPhone(), profissional.getAddress(), profissional.getDisponibilidade(), profissional.getAreaAtuacao(), "0", profissional.getCpfCnpj()))
     .orElseGet(() -> contratanteRepository.findByEmail(request.getEmail())
-    .map(contratante -> new HomeResponseDTO(contratante.getEmail(),contratante.getName(), contratante.getPhone(), contratante.getAddress(), "0", "0", contratante.getDescricao(), contratante.getCpfCnpj()))
+    .map(contratante -> new HomeResponseDTO(contratante.getId(),contratante.getEmail(),contratante.getName(), contratante.getPhone(), contratante.getAddress(), "0", "0", contratante.getDescricao(), contratante.getCpfCnpj()))
     .orElse(new HomeResponseDTO()));
   }
 
@@ -43,7 +43,7 @@ public class HomeService {
     profissional.setDisponibilidade(request.getDisponibilidade());
     profissional.setAreaAtuacao(request.getAreaAtuacao());
     profissionalRepository.save(profissional);
-    return new HomeResponseDTO(profissional.getEmail(),profissional.getName(), profissional.getPhone(), profissional.getAddress(), profissional.getDisponibilidade(), profissional.getAreaAtuacao(), null, profissional.getCpfCnpj());
+    return new HomeResponseDTO(profissional.getId(),profissional.getEmail(),profissional.getName(), profissional.getPhone(), profissional.getAddress(), profissional.getDisponibilidade(), profissional.getAreaAtuacao(), null, profissional.getCpfCnpj());
     })
     .orElse(new HomeResponseDTO());
   }
@@ -55,7 +55,7 @@ public class HomeService {
     contratante.setAddress(request.getAddress());
     contratante.setDescricao(request.getDescricao());
     contratanteRepository.save(contratante);
-    return new HomeResponseDTO(contratante.getEmail(),contratante.getName(), contratante.getPhone(), contratante.getAddress(), null, null, contratante.getDescricao(), contratante.getCpfCnpj());
+    return new HomeResponseDTO(contratante.getId(),contratante.getEmail(),contratante.getName(), contratante.getPhone(), contratante.getAddress(), null, null, contratante.getDescricao(), contratante.getCpfCnpj());
     })
     .orElse(new HomeResponseDTO());
   }
@@ -64,6 +64,7 @@ public class HomeService {
     return searchProfissionalRepository.findByAreaAtuacao(request.getAreaAtuacao())
         .stream()
         .map(profissional -> SearchProfissionalResponseDTO.builder()
+            .id(profissional.getId())
             .name(profissional.getName())
             .phone(profissional.getPhone())
             .address(profissional.getAddress())
