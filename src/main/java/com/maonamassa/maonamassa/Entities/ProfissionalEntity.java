@@ -25,4 +25,7 @@ public class ProfissionalEntity extends UserEntity {
   @NotBlank()
   @Schema(description = "CPF do profissional", example = "12345678910")
   public String cpfCnpj;
+
+  @Schema(description = "Descrição do profissional", example = "Desenvolvedor de software com 10 anos de experiência")
+  public String descricao;
 }
