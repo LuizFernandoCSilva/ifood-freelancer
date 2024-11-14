@@ -27,62 +27,80 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/home")
 public class HomeController {
 
-@Autowired
-private HomeService homeService;
+    @Autowired
+    private HomeService homeService;
 
-@GetMapping
-@Operation(summary = "Home", description = "Home page")
-    public ResponseEntity<HomeResponseDTO> home(@RequestHeader("email") String email) {
+    // Endpoint para Home Profissional
+    @GetMapping("/profissional")
+    @Operation(summary = "Home Profissional", description = "Página inicial do profissional")
+    public ResponseEntity<HomeResponseDTO> homeProfissional(@RequestHeader("email") String email) {
         try {
             HomeResponseDTO response = homeService.execute(new HomeRequestDTO(email));
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
             HomeResponseDTO errorResponse = HomeResponseDTO.builder()
-                                                        .name("Erro interno no servidor: " + e.getMessage())
-                                                        .build();
+                    .name("Erro interno no servidor: " + e.getMessage())
+                    .build();
             return ResponseEntity.status(500).body(errorResponse);
         }
     }
 
-@PutMapping("/update-profissional")
+    // Endpoint para Home Contratante
+    @GetMapping("/contratante")
+    @Operation(summary = "Home Contratante", description = "Página inicial do contratante")
+    public ResponseEntity<HomeResponseDTO> homeContratante(@RequestHeader("email") String email) {
+        try {
+            HomeResponseDTO response = homeService.execute(new HomeRequestDTO(email));
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            HomeResponseDTO errorResponse = HomeResponseDTO.builder()
+                    .name("Erro interno no servidor: " + e.getMessage())
+                    .build();
+            return ResponseEntity.status(500).body(errorResponse);
+        }
+    }
+
+    // Endpoint para atualizar informações do Profissional
+    @PutMapping("/profissional/update-profissional")
     public ResponseEntity<HomeResponseDTO> updateProfissional(@RequestBody HomeUpdateRequestProfissionalDTO request) {
-       try{
+        try {
             HomeResponseDTO response = homeService.updateProfissional(request);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
             HomeResponseDTO errorResponse = HomeResponseDTO.builder()
-                                                        .name("Erro interno no servidor: " + e.getMessage())
-                                                        .build();
+                    .name("Erro interno no servidor: " + e.getMessage())
+                    .build();
             return ResponseEntity.status(500).body(errorResponse);
         }
     }
 
-    // Endpoint para atualizar informações do contratante
-@PutMapping("/update-contratante")
+    // Endpoint para atualizar informações do Contratante
+    @PutMapping("/contratante/update-contratante")
     public ResponseEntity<HomeResponseDTO> updateContratante(@RequestBody HomeUpdateRequestContratanteDTO request) {
-        try{
+        try {
             HomeResponseDTO response = homeService.updateContratante(request);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
             HomeResponseDTO errorResponse = HomeResponseDTO.builder()
-                                                        .name("Erro interno no servidor: " + e.getMessage())
-                                                        .build();
+                    .name("Erro interno no servidor: " + e.getMessage())
+                    .build();
             return ResponseEntity.status(500).body(errorResponse);
         }
     }
 
-    @GetMapping("/professionals/{areaAtuacao}")
+    // Endpoint para buscar profissionais por área de atuação
+    @GetMapping("/profissional/professionals/{areaAtuacao}")
     public ResponseEntity<List<SearchProfissionalResponseDTO>> professionals(@PathVariable("areaAtuacao") String areaAtuacao) {
         try {
-            System.out.println("Área de atuação: " + areaAtuacao);
             List<SearchProfissionalResponseDTO> response = homeService.searchProfissionais(new SearchProfissionalRequestDTO(areaAtuacao));
-            return ResponseEntity.ok(response);  // Retorna a lista de profissionais
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).build();  // Retorna apenas o status 500 no caso de erro
+            return ResponseEntity.status(500).build();
         }
     }
 }

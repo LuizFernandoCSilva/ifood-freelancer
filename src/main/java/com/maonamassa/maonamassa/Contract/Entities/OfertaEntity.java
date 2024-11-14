@@ -1,5 +1,6 @@
 package com.maonamassa.maonamassa.Contract.Entities;
 
+import java.util.Date;
 import java.util.UUID;
 
 import com.maonamassa.maonamassa.Entities.ContratanteEntity;
@@ -33,4 +34,9 @@ public class OfertaEntity {
     @ManyToOne
     @JoinColumn(name = "profissional_id", nullable = false) // A coluna 'profissional_id' será usada para o FK
     private ProfissionalEntity profissional;
+
+    private Date dataOferta; // Data da oferta
+    private Date prazoConclusao; // Prazo de conclusão da oferta
+    private boolean aceita; // Indica se a oferta foi aceita
+
 }

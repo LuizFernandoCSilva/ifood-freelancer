@@ -10,7 +10,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 @Service
 public class JWTContratanteProvider {
-  @Value("${security.token.secret.contratante}")
+  @Value("${jwt.secret}")
   private String secretKey;
 
   public DecodedJWT validateToken(String token) {
@@ -20,7 +20,7 @@ public class JWTContratanteProvider {
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
     try {
-      // retorna o tudo do profissional que está no token
+      // retorna o tudo do contratante que está no token
       var tokenDecoded = JWT.require(algorithm)
           .build()
           .verify(token);

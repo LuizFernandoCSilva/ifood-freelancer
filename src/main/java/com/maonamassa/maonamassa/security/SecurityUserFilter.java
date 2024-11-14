@@ -1,6 +1,7 @@
 package com.maonamassa.maonamassa.security;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,20 +36,19 @@ public class SecurityUserFilter extends OncePerRequestFilter {
 
     if (header != null) {
       var token = validateTokenBasedOnPath(request, header);
-      
       if (token != null) {
         // Set the user ID attribute based on the type of user
-        if (request.getRequestURI().startsWith("/profissional")) {
+        if (request.getRequestURI().contains("/profissional")) {
           request.setAttribute("profissionalId", token.getSubject());
-        } else if (request.getRequestURI().startsWith("/contratante")) {
+        } else if (request.getRequestURI().contains("/contratante")) {
           request.setAttribute("contratanteId", token.getSubject());
         }
 
-        // Define the roles based on the token claims
-        var roles = token.getClaim("type").asList(String.class);
-        var grants = roles.stream()
-          .map(role -> new SimpleGrantedAuthority("TYPE_" + role.toUpperCase()))
-          .collect(Collectors.toList());
+        var rolesClaim = token.getClaim("type");
+        var role = rolesClaim.asString();  // Aqui a claim "type" é tratada como uma string
+
+        // Agora você pode mapear a string para uma autoridade (role)
+        var grants = List.of(new SimpleGrantedAuthority("TYPE_" + role.toUpperCase()));
 
         // Set the authentication in the security context
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(), null, grants);
@@ -71,10 +71,14 @@ public class SecurityUserFilter extends OncePerRequestFilter {
    * @return Token JWT decodificado ou null se inválido
    */
   private DecodedJWT validateTokenBasedOnPath(HttpServletRequest request, String header) {
-    if (request.getRequestURI().startsWith("/profissional")) {
-      return jwtProfissionalProvider.validateToken(header);
-    } else if (request.getRequestURI().startsWith("/contratante")) {
-      return jwtContratanteProvider.validateToken(header);
+    try {
+      if (request.getRequestURI().contains("/profissional")) {
+        return jwtProfissionalProvider.validateToken(header);
+      } else if (request.getRequestURI().contains("/contratante")) {
+        return jwtContratanteProvider.validateToken(header);
+      }
+    } catch (Exception e) {
+      System.err.println("Token validation failed: " + e.getMessage());
     }
     return null;
   }

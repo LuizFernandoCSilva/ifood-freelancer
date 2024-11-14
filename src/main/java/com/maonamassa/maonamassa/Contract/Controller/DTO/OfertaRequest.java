@@ -11,6 +11,7 @@ public class OfertaRequest {
   private UUID profissionalId;    // ID do profissional
   private String detalhes;        // Detalhes da oferta
   private String valor;           // Valor da oferta
+  
 
   
 }

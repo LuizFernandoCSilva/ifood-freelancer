@@ -11,13 +11,12 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 @Service
 public class JWTProfissionalProvider {
   
-  @Value("${security.token.secret.profissional}")
+  @Value("${jwt.secret}")
   private String secretKey;
 
   public DecodedJWT validateToken(String token) {
     token = token.replace("Bearer ", "");
 
-    //
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
     try {

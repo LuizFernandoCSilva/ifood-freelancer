@@ -19,8 +19,8 @@ public class OfertaController {
     @Autowired
     private OfertaService ofertaService;
 
-    // Endpoint para criar a oferta
-    @PostMapping
+    
+    @PostMapping("/contratante")
     public ResponseEntity<OfertaEntity> fazerOferta(@RequestBody OfertaRequest ofertaRequest) {
         System.out.println("OfertaController.fazerOferta");
         System.out.println("ofertaRequest: " + ofertaRequest);
@@ -39,13 +39,40 @@ public class OfertaController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/profissional/{id}")
     public ResponseEntity<List<FindOFertasResponse>> getOffers(@PathVariable UUID id) {
         try{
             return ResponseEntity.ok(ofertaService.getOfertas(id));
         }catch(Exception e){
             e.printStackTrace();
             return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @PutMapping("/profissional/accept/{id}")
+    public ResponseEntity<FindOFertasResponse> acceptOffer(@PathVariable UUID id) {
+        try {
+            return ResponseEntity.ok(ofertaService.acceptOffer(id));
+        } catch (IllegalArgumentException ex) {
+            // Captura erro de UUID inválido
+            return ResponseEntity.badRequest().body(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @DeleteMapping("/profissional/{id}")
+    public ResponseEntity<Void> deleteOffer(@PathVariable UUID id) {
+        try {
+            ofertaService.deleteOffer(id);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            // Captura erro de UUID inválido
+            return ResponseEntity.badRequest().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
         }
     }
 }

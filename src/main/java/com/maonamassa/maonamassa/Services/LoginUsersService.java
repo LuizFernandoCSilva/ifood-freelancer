@@ -41,11 +41,9 @@ public class LoginUsersService {
 
     public AuthUserResponseDTO execute(LoginUserRequestDTO userLogin) throws Exception {
 
-        logger.info("Tentando logar usuário com email: {}", userLogin.getEmail());
         // Tenta encontrar o usuário como Contratante
         var contratante = contratanteRepository.findByEmail(userLogin.getEmail());
         if (contratante.isPresent()) {
-            logger.info("Usuário Contratante encontrado: {}", contratante.get());
             return authenticateContratante(contratante.get(), userLogin.getPassword());
         }
 
